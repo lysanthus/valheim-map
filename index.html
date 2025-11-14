@@ -23,6 +23,61 @@
       height: 100%;
     }
 
+    .suggest-panel {
+      position: absolute;
+      top: 70px;
+      left: 10px;
+      width: 260px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 8px 10px;
+      font-family: sans-serif;
+      font-size: 12px;
+      border-radius: 4px;
+      z-index: 1000;
+    }
+    
+    .suggest-panel label {
+      display: block;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+    
+    .suggest-panel input,
+    .suggest-panel select,
+    .suggest-panel textarea {
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+    
+    .suggest-panel textarea {
+      resize: vertical;
+    }
+    
+    .suggest-panel-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    
+    .suggest-panel button {
+      flex: 1;
+      padding: 3px 4px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .suggest-active {
+      outline: 2px solid #ffd700;
+    }
+
     .coords-panel {
       position: absolute;
       bottom: 10px;
@@ -169,6 +224,41 @@
     <textarea id="exportText" rows="6" spellcheck="false"
       placeholder="Use the polyline tool in the toolbar to draw a road.&#10;The resulting GeoJSON snippet will appear here."></textarea>
   </div>
+  
+  <button id="suggestPoiBtn"
+        style="position:absolute; top:160px; right:25px; z-index:1000;">
+    + Suggest POI
+  </button>
+    
+    <div id="suggestPanel" class="suggest-panel hidden">
+      <div><strong>Suggest a POI</strong></div>
+      <div style="margin-bottom:4px; font-size:11px;">
+        Fill in details, then click on the map to place it.
+      </div>
+    
+      <label for="poiName">Name</label>
+      <input id="poiName" type="text" placeholder="e.g. Swamp Outpost">
+    
+      <label for="poiKind">Type</label>
+      <select id="poiKind">
+        <option value="base">Base</option>
+        <option value="outpost">Outpost</option>
+        <option value="portal">Portal</option>
+        <option value="poi">Generic POI</option>
+      </select>
+    
+      <label for="poiNotes">Notes</label>
+      <textarea id="poiNotes" rows="3" placeholder="e.g. small shack, portal to iron farm"></textarea>
+    
+      <label for="poiJson">JSON snippet (send to Adam)</label>
+      <textarea id="poiJson" rows="5" readonly
+                placeholder="After you click the map, the JSON will appear here."></textarea>
+    
+      <div class="suggest-panel-buttons">
+        <button type="button" id="clearPoiBtn">Clear</button>
+        <button type="button" id="closePoiBtn">Close</button>
+      </div>
+    </div>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -234,6 +324,49 @@
     });
     
     miniMap.addTo(map);
+
+    // --- Suggest POI UI wiring ---
+
+    const suggestBtn   = document.getElementById('suggestPoiBtn');
+    const suggestPanel = document.getElementById('suggestPanel');
+    const poiNameInput = document.getElementById('poiName');
+    const poiKindInput = document.getElementById('poiKind');
+    const poiNotesInput = document.getElementById('poiNotes');
+    const poiJsonOutput = document.getElementById('poiJson');
+    const clearPoiBtn  = document.getElementById('clearPoiBtn');
+    const closePoiBtn  = document.getElementById('closePoiBtn');
+    
+    let suggestMode = false;
+    
+    function setSuggestMode(on) {
+      suggestMode = on;
+      if (on) {
+        suggestPanel.classList.remove('hidden');
+        suggestBtn.classList.add('suggest-active');
+      } else {
+        suggestPanel.classList.add('hidden');
+        suggestBtn.classList.remove('suggest-active');
+      }
+    }
+    
+    // Toggle button
+    suggestBtn.addEventListener('click', () => {
+      setSuggestMode(!suggestMode);
+    });
+    
+    // Clear fields
+    clearPoiBtn.addEventListener('click', () => {
+      poiNameInput.value = '';
+      poiNotesInput.value = '';
+      poiJsonOutput.value = '';
+    });
+    
+    // Close panel and exit suggest mode
+    closePoiBtn.addEventListener('click', () => {
+      setSuggestMode(false);
+    });
+
+
 
     // -------------------------
     //  Feature styling
@@ -386,13 +519,42 @@
     const coordsDiv = document.getElementById('coords');
 
     map.on('click', function(e) {
-      // e.latlng.lat = y (from top), e.latlng.lng = x (from left)
       const x = Math.round(e.latlng.lng);
       const y = Math.round(e.latlng.lat);
-
+    
       coordsDiv.textContent = `x: ${x}, y: ${y}`;
-
-      // Handy snippet for creating a new base point
+    
+      // If we're in Suggest POI mode, build a snippet for the player
+      if (suggestMode) {
+        const name = poiNameInput.value.trim() || "New POI";
+        const kind = (poiKindInput.value || "poi").trim();
+        const notes = poiNotesInput.value.trim();
+    
+        const feature = {
+          type: "Feature",
+          properties: {
+            name: name,
+            kind: kind,
+            notes: notes
+          },
+          geometry: {
+            type: "Point",
+            coordinates: [x, y]
+          }
+        };
+    
+        const jsonText = JSON.stringify(feature, null, 2);
+        poiJsonOutput.value = jsonText;
+    
+        console.log('Suggested POI Feature:', jsonText);
+    
+        // Optional: small alert to confirm
+        // alert("POI JSON generated below. Copy it and send it to the GM!");
+    
+        return; // don't also generate the default snippet
+      }
+    
+      // Normal behavior when NOT in suggest mode:
       const snippet = {
         type: "Feature",
         properties: {
