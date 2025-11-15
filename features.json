@@ -257,6 +257,30 @@
     "type": "Point",
     "coordinates": [2479, 2045]
   }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Portal",
+    "kind": "portal",
+    "notes": ""
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [2176, 2113]
+  }
 }
-]
+],
+{
+  "type": "Feature",
+  "properties": {
+    "name": "New POI",
+    "kind": "portal",
+    "notes": ""
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [2107, 2389]
+  }
+}
 }
