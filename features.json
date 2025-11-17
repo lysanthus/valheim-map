@@ -296,6 +296,35 @@
       2362
     ]
   }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Tower Road",
+    "kind": "road",
+    "notes": ""
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        2111,
+        2378
+      ],
+      [
+        2112,
+        2372
+      ],
+      [
+        2114,
+        2366
+      ],
+      [
+        2119,
+        2360
+      ]
+    ]
+  }
 }
 ]
 }
