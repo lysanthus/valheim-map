@@ -281,6 +281,21 @@
     "type": "Point",
     "coordinates": [2107, 2389]
   }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Southwatch Tower",
+    "kind": "poi",
+    "notes": ""
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      2117,
+      2362
+    ]
+  }
 }
 ]
 }
