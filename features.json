@@ -1,503 +1,636 @@
 {
   "type": "FeatureCollection",
   "features": [
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Fort Ursine",
-    "kind": "base",
-    "notes": "Smelters and forge"
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [2176, 2106]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Eastern Road",
-    "kind": "road",
-    "notes": "Rough path, trolls sometimes"
-  },
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
-      [2174, 2103],
-      [2164, 2090],
-      [2134, 2088],
-      [2105, 2080],
-      [2079, 2099],
-      [2051, 2097]
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Bayview",
-    "kind": "hidden",
-    "alwaysLabel": true,
-    "notes": "Icon already on base map"
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [2037, 2126]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Start Road",
-    "kind": "road",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
-      [
-        2048,
-        2098
-      ],
-      [
-        2040,
-        2094
-      ],
-      [
-        2045,
-        2088
-      ],
-      [
-        2038,
-        2083
-      ],
-      [
-        2042,
-        2074
-      ],
-      [
-        2047,
-        2063
-      ],
-      [
-        2037,
-        2049
-      ]
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Folly Road",
-    "kind": "road",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
-      [
-        2063,
-        2098
-      ],
-      [
-        2070,
-        2086
-      ],
-      [
-        2072,
-        2073
-      ],
-      [
-        2070,
-        2060
-      ],
-      [
-        2067,
-        2048
-      ],
-      [
-        2057,
-        2044
-      ],
-      [
-        2045,
-        2045
-      ],
-      [
-        2036,
-        2048
-      ]
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "South Shore Road",
-    "kind": "road",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
-      [
-        2116,
-        2083
-      ],
-      [
-        2115,
-        2064
-      ],
-      [
-        2119,
-        2052
-      ],
-      [
-        2115,
-        2037
-      ],
-      [
-        2123,
-        2024
-      ]
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Switchback Path",
-    "kind": "road",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
-      [2116,
-        2041],
-      [2096,
-        2046],
-      [2078,
-        2045],
-      [2068,
-        2049]
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Western Road",
-    "kind": "road",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
-      [
-        2039,
-        2099
-      ],
-      [
-        2030,
-        2108
-      ],
-      [
-        2018,
-        2110
-      ],
-      [
-        2007,
-        2104
-      ],
-      [
-        1998,
-        2098
-      ],
-      [
-        1987,
-        2091
-      ],
-      [
-        1976,
-        2091
-      ],
-      [
-        1965,
-        2090
-      ],
-      [
-        1956,
-        2090
-      ]
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "New Base?",
-    "kind": "base",
-    "notes": "Name TBD"
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [2110, 2382]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Cabin",
-    "kind": "outpost",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [2479, 2045]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Portal",
-    "kind": "portal",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [2176, 2113]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Portal",
-    "kind": "portal",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [2107, 2389]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Southwatch Tower",
-    "kind": "poi",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      2117,
-      2362
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Tower Road",
-    "kind": "road",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
-      [
-        2111,
-        2378
-      ],
-      [
-        2112,
-        2372
-      ],
-      [
-        2114,
-        2366
-      ],
-      [
-        2119,
-        2360
-      ]
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "name": "Grand Coast Road",
-    "kind": "road",
-    "notes": ""
-  },
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
-      [
-        2119,
-        2360
-      ],
-      [
-        2120,
-        2350
-      ],
-      [
-        2114,
-        2346
-      ],
-      [
-        2111,
-        2341
-      ],
-      [
-        2111,
-        2336
-      ],
-      [
-        2105,
-        2333
-      ],
-      [
-        2105,
-        2327
-      ],
-      [
-        2102,
-        2322
-      ],
-      [
-        2096,
-        2319
-      ],
-      [
-        2091,
-        2316
-      ],
-      [
-        2085,
-        2314
-      ],
-      [
-        2081,
-        2308
-      ],
-      [
-        2080,
-        2298
-      ],
-      [
-        2079,
-        2290
-      ],
-      [
-        2076,
-        2285
-      ],
-      [
-        2078,
-        2281
-      ],
-      [
-        2076,
-        2274
-      ],
-      [
-        2079,
-        2270
-      ],
-      [
-        2078,
-        2263
-      ],
-      [
-        2080,
-        2258
-      ],
-      [
-        2080,
-        2249
-      ],
-      [
-        2083,
-        2255
-      ],
-      [
-        2088,
-        2253
-      ],
-      [
-        2089,
-        2248
-      ],
-      [
-        2091,
-        2244
-      ],
-      [
-        2091,
-        2238
-      ],
-      [
-        2095,
-        2231
-      ],
-      [
-        2106,
-        2230
-      ],
-      [
-        2112,
-        2235
-      ],
-      [
-        2116,
-        2231
-      ],
-      [
-        2121,
-        2233
-      ],
-      [
-        2126,
-        2237
-      ],
-      [
-        2123,
-        2243
-      ],
-      [
-        2129,
-        2245
-      ],
-      [
-        2133,
-        2240
-      ],
-      [
-        2133,
-        2247
-      ],
-      [
-        2138,
-        2250
-      ],
-      [
-        2142,
-        2244
-      ],
-      [
-        2143,
-        2238
-      ],
-      [
-        2150,
-        2241
-      ]
-    ]
-  }
-}
-]
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fort Ursine",
+        "kind": "base",
+        "notes": "Smelters and forge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2176,
+          2106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eastern Road",
+        "kind": "road",
+        "notes": "Rough path, trolls sometimes"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2174,
+            2103
+          ],
+          [
+            2164,
+            2090
+          ],
+          [
+            2134,
+            2088
+          ],
+          [
+            2105,
+            2080
+          ],
+          [
+            2079,
+            2099
+          ],
+          [
+            2051,
+            2097
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bayview",
+        "kind": "hidden",
+        "alwaysLabel": true,
+        "notes": "Icon already on base map"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2037,
+          2126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Start Road",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2048,
+            2098
+          ],
+          [
+            2040,
+            2094
+          ],
+          [
+            2045,
+            2088
+          ],
+          [
+            2038,
+            2083
+          ],
+          [
+            2042,
+            2074
+          ],
+          [
+            2047,
+            2063
+          ],
+          [
+            2037,
+            2049
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Folly Road",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2063,
+            2098
+          ],
+          [
+            2070,
+            2086
+          ],
+          [
+            2072,
+            2073
+          ],
+          [
+            2070,
+            2060
+          ],
+          [
+            2067,
+            2048
+          ],
+          [
+            2057,
+            2044
+          ],
+          [
+            2045,
+            2045
+          ],
+          [
+            2036,
+            2048
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Shore Road",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2116,
+            2083
+          ],
+          [
+            2115,
+            2064
+          ],
+          [
+            2119,
+            2052
+          ],
+          [
+            2115,
+            2037
+          ],
+          [
+            2123,
+            2024
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Switchback Path",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2116,
+            2041
+          ],
+          [
+            2096,
+            2046
+          ],
+          [
+            2078,
+            2045
+          ],
+          [
+            2068,
+            2049
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Western Road",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2039,
+            2099
+          ],
+          [
+            2030,
+            2108
+          ],
+          [
+            2018,
+            2110
+          ],
+          [
+            2007,
+            2104
+          ],
+          [
+            1998,
+            2098
+          ],
+          [
+            1987,
+            2091
+          ],
+          [
+            1976,
+            2091
+          ],
+          [
+            1965,
+            2090
+          ],
+          [
+            1956,
+            2090
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Base?",
+        "kind": "base",
+        "notes": "Name TBD"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2110,
+          2382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cabin",
+        "kind": "outpost",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2479,
+          2045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Portal",
+        "kind": "portal",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2176,
+          2113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Portal",
+        "kind": "portal",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2107,
+          2389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southwatch Tower",
+        "kind": "poi",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2117,
+          2362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tower Road",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2111,
+            2378
+          ],
+          [
+            2112,
+            2372
+          ],
+          [
+            2114,
+            2366
+          ],
+          [
+            2119,
+            2360
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grand Coast Road",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2119,
+            2360
+          ],
+          [
+            2120,
+            2350
+          ],
+          [
+            2114,
+            2346
+          ],
+          [
+            2111,
+            2341
+          ],
+          [
+            2111,
+            2336
+          ],
+          [
+            2105,
+            2333
+          ],
+          [
+            2105,
+            2327
+          ],
+          [
+            2102,
+            2322
+          ],
+          [
+            2096,
+            2319
+          ],
+          [
+            2091,
+            2316
+          ],
+          [
+            2085,
+            2314
+          ],
+          [
+            2081,
+            2308
+          ],
+          [
+            2080,
+            2298
+          ],
+          [
+            2079,
+            2290
+          ],
+          [
+            2076,
+            2285
+          ],
+          [
+            2078,
+            2281
+          ],
+          [
+            2076,
+            2274
+          ],
+          [
+            2079,
+            2270
+          ],
+          [
+            2078,
+            2263
+          ],
+          [
+            2080,
+            2258
+          ],
+          [
+            2080,
+            2249
+          ],
+          [
+            2083,
+            2255
+          ],
+          [
+            2088,
+            2253
+          ],
+          [
+            2089,
+            2248
+          ],
+          [
+            2091,
+            2244
+          ],
+          [
+            2091,
+            2238
+          ],
+          [
+            2095,
+            2231
+          ],
+          [
+            2106,
+            2230
+          ],
+          [
+            2112,
+            2235
+          ],
+          [
+            2116,
+            2231
+          ],
+          [
+            2121,
+            2233
+          ],
+          [
+            2126,
+            2237
+          ],
+          [
+            2123,
+            2243
+          ],
+          [
+            2129,
+            2245
+          ],
+          [
+            2133,
+            2240
+          ],
+          [
+            2133,
+            2247
+          ],
+          [
+            2138,
+            2250
+          ],
+          [
+            2142,
+            2244
+          ],
+          [
+            2143,
+            2238
+          ],
+          [
+            2150,
+            2241
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Road",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2180,
+            2109
+          ],
+          [
+            2185,
+            2112
+          ],
+          [
+            2184,
+            2118
+          ],
+          [
+            2185,
+            2122
+          ],
+          [
+            2184,
+            2129
+          ],
+          [
+            2188,
+            2133
+          ],
+          [
+            2189,
+            2137
+          ],
+          [
+            2194,
+            2140
+          ],
+          [
+            2198,
+            2144
+          ],
+          [
+            2198,
+            2148
+          ],
+          [
+            2201,
+            2153
+          ],
+          [
+            2205,
+            2153
+          ],
+          [
+            2212,
+            2155
+          ],
+          [
+            2214,
+            2159
+          ],
+          [
+            2213,
+            2164
+          ],
+          [
+            2214,
+            2168
+          ],
+          [
+            2219,
+            2170
+          ],
+          [
+            2224,
+            2172
+          ],
+          [
+            2231,
+            2173
+          ]
+        ]
+      }
+    }
+  ]
 }
