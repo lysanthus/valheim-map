@@ -322,6 +322,11 @@
       <button id="poiSearchBtn" type="button">Go</button>
     </div>
     <div id="poiSearchResults" class="search-results" style="display:none;"></div>
+    
+    <button id="toggleLabelsBtn"
+        style="position:absolute; bottom:10px; right:10px; z-index:1000; padding:4px 8px; font-size:12px;">
+      Show All Labels
+    </button>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -873,6 +878,59 @@
 
       alert("Road drawn! A GeoJSON Feature for it is now in the bottom-right panel and in the browser console.\n\nCopy it into features.json under \"features\".");
     });
+    
+    // Always Visible Labels Toggle
+    let labelsAlwaysVisible = false;
+
+    document.getElementById('toggleLabelsBtn').addEventListener('click', () => {
+      labelsAlwaysVisible = !labelsAlwaysVisible;
+    
+      // Update button text
+      const btn = document.getElementById('toggleLabelsBtn');
+      btn.textContent = labelsAlwaysVisible ? "Hide Labels" : "Show All Labels";
+    
+      // Function that toggles tooltip mode for a layer
+      function toggleTooltip(layer) {
+        if (!layer.getTooltip) return;      // not every layer has a tooltip
+        const tt = layer.getTooltip();
+        if (!tt) return;
+    
+        // Extract the existing content and class
+        const content = tt._content;
+        const className = tt.options.className || "";
+    
+        // Remove the old tooltip entirely
+        layer.unbindTooltip();
+    
+        // Rebind with new visibility mode
+        layer.bindTooltip(content, {
+          permanent: labelsAlwaysVisible,
+          direction: 'top',
+          offset: [0, -10],
+          opacity: 0.9,
+          className: className
+        });
+    
+        if (!labelsAlwaysVisible) {
+          // In hover mode, ensure tooltip closes
+          layer.closeTooltip();
+        } else {
+          layer.openTooltip();
+        }
+      }
+    
+      // Toggle all layer groups except hidden labels
+      baseLayer.eachLayer(toggleTooltip);
+      portalLayer.eachLayer(toggleTooltip);
+      outpostLayer.eachLayer(toggleTooltip);
+      otherLayer.eachLayer(toggleTooltip);
+    
+      // Roads rarely have tooltips but include them anyway
+      roadLayer.eachLayer(toggleTooltip);
+    
+      // DO NOT toggle hidden label anchors — leave them always visible
+    });
+    
   </script>
 </body>
 </html>
