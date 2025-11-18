@@ -325,6 +325,7 @@
     <div class="search-panel">
       <input id="poiSearchInput" type="text" placeholder="Search POIs..." />
       <button id="poiSearchBtn" type="button">Go</button>
+      <button id="poiSearchClearBtn" type="button">Clear</button>
     </div>
     <div id="poiSearchResults" class="search-results" style="display:none;"></div>
 
@@ -676,7 +677,17 @@
     const searchInput   = document.getElementById('poiSearchInput');
     const searchBtn     = document.getElementById('poiSearchBtn');
     const searchResults = document.getElementById('poiSearchResults');
+    const searchClearBtn = document.getElementById('poiSearchClearBtn');
     
+    if (searchClearBtn) {
+      searchClearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'none';
+        searchInput.focus();
+      });
+    }
+
     function focusOnLayer(entry) {
       const layer = entry.layer;
     
