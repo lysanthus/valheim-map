@@ -190,6 +190,58 @@
       opacity: 1;
     }
     
+    .search-panel {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.9);
+      padding: 4px 6px;
+      border-radius: 4px;
+      font-family: sans-serif;
+      font-size: 12px;
+      z-index: 1000;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    
+    .search-panel input {
+      font-size: 12px;
+      padding: 2px 4px;
+    }
+    
+    .search-panel button {
+      font-size: 12px;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+    
+    .search-results {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.95);
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      font-family: sans-serif;
+      font-size: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 1000;
+      min-width: 220px;
+    }
+    
+    .search-result-item {
+      padding: 4px 6px;
+      cursor: pointer;
+    }
+    
+    .search-result-item:hover {
+      background: #eee;
+    }
+    
   </style>
 </head>
 
@@ -264,6 +316,12 @@
         <button type="button" id="closePoiBtn">Close</button>
       </div>
     </div>
+    
+    <div class="search-panel">
+      <input id="poiSearchInput" type="text" placeholder="Search POIs..." />
+      <button id="poiSearchBtn" type="button">Go</button>
+    </div>
+    <div id="poiSearchResults" class="search-results" style="display:none;"></div>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -271,6 +329,9 @@
   <script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>
 
   <script>
+    // Search index of POIs
+    const searchIndex = [];
+  
     // Image size in pixels
     const IMG_WIDTH = 4096;
     const IMG_HEIGHT = 4096;
@@ -524,9 +585,11 @@
             // keep your existing popup/label behavior
             onEachFeature(feature, layer);
     
-            const kind = (feature.properties && feature.properties.kind) || 'other';
-            let group;
+            const props = feature.properties || {};
+            const kind = props.kind || 'other';
     
+            // Add to appropriate layer group
+            let group;
             if (kind === 'base') {
               group = baseLayer;
             } else if (kind === 'portal') {
@@ -540,11 +603,18 @@
             } else {
               group = otherLayer;
             }
-    
             group.addLayer(layer);
+    
+            // Add to search index (skip hidden label anchors)
+            if (props.name) {
+              searchIndex.push({
+                name: props.name,
+                kind: kind,
+                layer: layer
+              });
+            }
           }
         });
-        // Note: no .addTo(map) here; the groups already live on the map
       })
       .catch(err => {
         console.error('Error loading features.json:', err);
@@ -595,6 +665,89 @@
           }
         });
       }
+      
+    // --- POI search ---
+
+    const searchInput   = document.getElementById('poiSearchInput');
+    const searchBtn     = document.getElementById('poiSearchBtn');
+    const searchResults = document.getElementById('poiSearchResults');
+    
+    function focusOnLayer(entry) {
+      const layer = entry.layer;
+    
+      // For points: center and zoom in a bit
+      if (layer.getLatLng) {
+        const latlng = layer.getLatLng();
+        const targetZoom = Math.max(map.getZoom(), 0); // don't zoom out when searching
+        map.setView(latlng, targetZoom);
+        if (layer.openPopup) {
+          layer.openPopup();
+        }
+      }
+      // For lines (roads): fit bounds
+      else if (layer.getBounds) {
+        const bounds = layer.getBounds();
+        map.fitBounds(bounds);
+      }
+    }
+    
+    function performSearch() {
+      const q = (searchInput.value || '').trim().toLowerCase();
+      if (!q) {
+        searchResults.style.display = 'none';
+        searchResults.innerHTML = '';
+        return;
+      }
+    
+      const matches = searchIndex.filter(entry =>
+        entry.name.toLowerCase().includes(q)
+      );
+    
+      if (matches.length === 0) {
+        searchResults.style.display = 'block';
+        searchResults.innerHTML = '<div class="search-result-item">No matches</div>';
+        return;
+      }
+    
+      // Build results list (cap to first 20)
+      searchResults.innerHTML = '';
+      matches.slice(0, 20).forEach((entry, idx) => {
+        const div = document.createElement('div');
+        div.className = 'search-result-item';
+        div.textContent = `${entry.name} [${entry.kind}]`;
+        div.addEventListener('click', () => {
+          searchResults.style.display = 'none';
+          focusOnLayer(entry);
+        });
+        searchResults.appendChild(div);
+      });
+      searchResults.style.display = 'block';
+    
+      // Optionally, auto-focus the first result:
+      // focusOnLayer(matches[0]);
+    }
+    
+    // Button click
+    if (searchBtn) {
+      searchBtn.addEventListener('click', performSearch);
+    }
+    
+    // Press Enter in input
+    if (searchInput) {
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+    
+      // Optional: live search while typing
+      // searchInput.addEventListener('input', performSearch);
+    }
+    
+    // Hide results when clicking on map
+    map.on('click', () => {
+      searchResults.style.display = 'none';
+    });
 
     // -------------------------
     //  Click to get pixel coordinates
