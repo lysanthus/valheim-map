@@ -330,6 +330,15 @@
     
     miniMap.addTo(map);
 
+    // Layer groups for categories
+    const baseLayer    = L.layerGroup().addTo(map);
+    const portalLayer  = L.layerGroup().addTo(map);
+    const outpostLayer = L.layerGroup().addTo(map);
+    const roadLayer    = L.layerGroup().addTo(map);
+    const otherLayer   = L.layerGroup().addTo(map);
+    const hiddenLayer  = L.layerGroup().addTo(map); // always on (for label anchors)
+
+
     // --- Suggest POI UI wiring ---
 
     const suggestBtn   = document.getElementById('suggestPoiBtn');
@@ -511,12 +520,81 @@
         L.geoJSON(data, {
           pointToLayer: pointToLayer,
           style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
+          onEachFeature: function(feature, layer) {
+            // keep your existing popup/label behavior
+            onEachFeature(feature, layer);
+    
+            const kind = (feature.properties && feature.properties.kind) || 'other';
+            let group;
+    
+            if (kind === 'base') {
+              group = baseLayer;
+            } else if (kind === 'portal') {
+              group = portalLayer;
+            } else if (kind === 'outpost') {
+              group = outpostLayer;
+            } else if (kind === 'road') {
+              group = roadLayer;
+            } else if (kind === 'hidden') {
+              group = hiddenLayer;
+            } else {
+              group = otherLayer;
+            }
+    
+            group.addLayer(layer);
+          }
+        });
+        // Note: no .addTo(map) here; the groups already live on the map
       })
       .catch(err => {
         console.error('Error loading features.json:', err);
       });
+
+      // Category toggle checkboxes
+      const cbBases    = document.getElementById('toggle-bases');
+      const cbPortals  = document.getElementById('toggle-portals');
+      const cbOutposts = document.getElementById('toggle-outposts');
+      const cbRoads    = document.getElementById('toggle-roads');
+      
+      if (cbBases) {
+        cbBases.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            map.addLayer(baseLayer);
+          } else {
+            map.removeLayer(baseLayer);
+          }
+        });
+      }
+      
+      if (cbPortals) {
+        cbPortals.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            map.addLayer(portalLayer);
+          } else {
+            map.removeLayer(portalLayer);
+          }
+        });
+      }
+      
+      if (cbOutposts) {
+        cbOutposts.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            map.addLayer(outpostLayer);
+          } else {
+            map.removeLayer(outpostLayer);
+          }
+        });
+      }
+      
+      if (cbRoads) {
+        cbRoads.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            map.addLayer(roadLayer);
+          } else {
+            map.removeLayer(roadLayer);
+          }
+        });
+      }
 
     // -------------------------
     //  Click to get pixel coordinates
