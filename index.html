@@ -197,28 +197,32 @@
   <div id="map"></div>
   <div id="coords" class="coords-panel">Click the map to get pixel coordinates…</div>
   <div class="legend">
-    <strong>Legend</strong>
-    <div>
-      <span class="legend-dot" style="background:#00cc00; border-color:#006600;"></span>
-      Base
-    </div>
-    <div>
-      <span class="legend-dot" style="background:#800080; border-color:#400040;"></span>
-      Portal
-    </div>
-    <div>
-      <span class="legend-dot" style="background:#ffa500; border-color:#cc8400;"></span>
-      Outpost
-    </div>
-    <div>
-      <span class="legend-dot" style="background:#0000ff; border-color:#000080;"></span>
-      Default POI
-    </div>
-    <div style="margin-top:4px;">
-      <span style="font-size: 16px;">—</span>
-      Road
-    </div>
+  <strong>Legend</strong>
+
+  <div>
+    <input type="checkbox" id="toggle-bases" checked>
+    <span class="legend-dot" style="background:#00cc00; border-color:#006600;"></span>
+    Base
   </div>
+
+  <div>
+    <input type="checkbox" id="toggle-portals" checked>
+    <span class="legend-dot" style="background:#800080; border-color:#400040;"></span>
+    Portal
+  </div>
+
+  <div>
+    <input type="checkbox" id="toggle-outposts" checked>
+    <span class="legend-dot" style="background:#ffa500; border-color:#cc8400;"></span>
+    Outpost
+  </div>
+
+  <div>
+    <input type="checkbox" id="toggle-roads" checked>
+    <span style="font-size: 16px; margin-right: 6px;">—</span>
+    Road
+  </div>
+</div>
 
   <div class="export-panel">
     <label for="exportText">Last drawn road (GeoJSON Feature)</label>
