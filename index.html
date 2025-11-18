@@ -282,8 +282,13 @@
       placeholder="Use the polyline tool in the toolbar to draw a road.&#10;The resulting GeoJSON snippet will appear here."></textarea>
   </div>
   
+  <button id="toggleLabelsBtn"
+          style="position:absolute; top:150px; right:10px; z-index:1000; padding:4px 8px; font-size:12px;">
+    Show All Labels
+  </button>
+  
   <button id="suggestPoiBtn"
-        style="position:absolute; top:160px; right:25px; z-index:1000;">
+          style="position:absolute; top:190px; right:10px; z-index:1000;">
     + Suggest POI
   </button>
     
@@ -322,11 +327,6 @@
       <button id="poiSearchBtn" type="button">Go</button>
     </div>
     <div id="poiSearchResults" class="search-results" style="display:none;"></div>
-    
-    <button id="toggleLabelsBtn"
-        style="position:absolute; top:80px; right:10px; z-index:1000; padding:4px 8px; font-size:12px;">
-      Show All Labels
-    </button>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
