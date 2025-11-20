@@ -270,6 +270,12 @@
   </div>
 
   <div>
+    <input type="checkbox" id="toggle-pois" checked>
+    <span class="legend-dot" style="background:#0000ff; border-color:#000080;"></span>
+    POI
+  </div>
+  
+  <div>
     <input type="checkbox" id="toggle-roads" checked>
     <span style="font-size: 16px; margin-right: 6px;">—</span>
     Road
@@ -630,6 +636,7 @@
       const cbBases    = document.getElementById('toggle-bases');
       const cbPortals  = document.getElementById('toggle-portals');
       const cbOutposts = document.getElementById('toggle-outposts');
+      const cbPois     = document.getElementById('toggle-pois');
       const cbRoads    = document.getElementById('toggle-roads');
       
       if (cbBases) {
@@ -658,6 +665,16 @@
             map.addLayer(outpostLayer);
           } else {
             map.removeLayer(outpostLayer);
+          }
+        });
+      }
+      
+      if (cbPois) {
+        cbPois.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            map.addLayer(otherLayer);
+          } else {
+            map.removeLayer(otherLayer);
           }
         });
       }
