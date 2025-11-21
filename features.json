@@ -715,6 +715,21 @@
           2490
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Haldor",
+        "kind": "hidden",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1981,
+          2490
+        ]
+      }
     }
   ]
 }
