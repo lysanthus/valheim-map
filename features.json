@@ -760,6 +760,21 @@
           2490
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Elder",
+        "kind": "hidden",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1909,
+          2288
+        ]
+      }
     }
   ]
 }
