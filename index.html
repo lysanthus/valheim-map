@@ -468,7 +468,9 @@
     // -------------------------
 
     function pointToLayer(feature, latlng) {
-      const kind = feature.properties && feature.properties.kind;
+      const props = feature.properties || {};
+      const name = props.name || "";
+      const kind = props.kind;
       let radius = 6;
       let color = '#000';
       let fillColor = '#fff';
@@ -476,49 +478,30 @@
     
       if (kind === 'base') {
         radius = 12;
-        fillColor = '#00cc00';    // bright green
-        color = '#006600';        // darker green outline
-        options = {
-          radius,
-          weight: 2,
-          color,
-          fillColor,
-          fillOpacity: 1
-        };
+        fillColor = '#00cc00';
+        color = '#006600';
+        options = { radius, weight: 2, color, fillColor, fillOpacity: 1 };
     
       } else if (kind === 'portal') {
         radius = 8;
-        fillColor = '#800080';    // purple
+        fillColor = '#800080';
         color = '#400040';
-        options = {
-          radius,
-          weight: 2,
-          color,
-          fillColor,
-          fillOpacity: 1
-        };
+        options = { radius, weight: 2, color, fillColor, fillOpacity: 1 };
     
       } else if (kind === 'outpost') {
-        // New type: smaller, orange-ish
         radius = 9;
-        fillColor = '#ffa500';    // orange
-        color = '#cc8400';        // darker orange outline
-        options = {
-          radius,
-          weight: 2,
-          color,
-          fillColor,
-          fillOpacity: 1
-        };
+        fillColor = '#ffa500';
+        color = '#cc8400';
+        options = { radius, weight: 2, color, fillColor, fillOpacity: 1 };
     
       } else if (kind === 'hidden') {
-        const labelType = props.labelType || ''; // "area" for region labels
-      
+        const labelType = props.labelType || ''; // optional "area" flag
+    
         let tooltipClass = 'map-label hidden-label';
         if (labelType === 'area') {
           tooltipClass += ' area-label';
         }
-      
+    
         const tooltip = L.tooltip({
           permanent: true,
           direction: 'center',
@@ -527,22 +510,14 @@
           .setContent(name)
           .setLatLng(latlng)
           .addTo(map);
-      
+    
         hiddenLayer.addLayer(tooltip);
         return;
-      }
-    
       } else {
-        // Default point
+        // generic POIs
         fillColor = '#0000ff';
         color = '#000080';
-        options = {
-          radius,
-          weight: 2,
-          color,
-          fillColor,
-          fillOpacity: 1
-        };
+        options = { radius, weight: 2, color, fillColor, fillOpacity: 1 };
       }
     
       return L.circleMarker(latlng, options);
