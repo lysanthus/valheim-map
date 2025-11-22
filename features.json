@@ -832,6 +832,21 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Crescent Hills",
+        "kind": "hidden",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1946,
+          1830
+        ]
+      }
     }
   ]
 }
