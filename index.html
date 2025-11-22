@@ -245,7 +245,7 @@
     /* Geographic area labels: a "flavor" of hidden labels */
     .leaflet-tooltip.map-label.hidden-label.area-label {
       font-size: 14px;           /* slightly larger */
-      color: rgba(255, 255, 255, 0.40);
+      color: rgba(255, 255, 255, 0.60);
       text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
       letter-spacing: 2px;       /* optional: more "region name" vibe */
       text-transform: uppercase; /* optional */
@@ -496,25 +496,47 @@
         options = { radius, weight: 2, color, fillColor, fillOpacity: 1 };
     
       } else if (kind === 'hidden') {
-        const labelType = props.labelType || ''; // optional "area" flag
-    
-        let tooltipClass = 'map-label hidden-label';
-        if (labelType === 'area') {
-          tooltipClass += ' area-label';
-        }
-    
-        const tooltip = L.tooltip({
-          permanent: true,
-          direction: 'center',
-          className: tooltipClass
-        })
-          .setContent(name)
-          .setLatLng(latlng)
-          .addTo(map);
-    
-        hiddenLayer.addLayer(tooltip);
-        return;
-      } else {
+          const labelType = props.labelType || ''; // "area" for region labels
+          const labelAngle = typeof props.labelAngle === 'number' ? props.labelAngle : null;
+        
+          let tooltipClass = 'map-label hidden-label';
+          if (labelType === 'area') {
+            tooltipClass += ' area-label';
+          }
+          if (labelAngle !== null) {
+            tooltipClass += ' angled-label'; // extra class for CSS
+          }
+        
+          // Wrap the name in a span so we can rotate just the text, not the tooltip container
+          const labelHtml = labelAngle !== null
+            ? `<span class="label-inner" data-angle="${labelAngle}">${name}</span>`
+            : name;
+        
+          const tooltip = L.tooltip({
+            permanent: true,
+            direction: 'center',
+            className: tooltipClass
+          })
+            .setContent(labelHtml)
+            .setLatLng(latlng)
+            .addTo(map);
+        
+          // After it's added, apply the rotation from data-angle
+          if (labelAngle !== null) {
+            const el = tooltip.getElement();
+            if (el) {
+              const inner = el.querySelector('.label-inner');
+              if (inner) {
+                inner.style.display = 'inline-block';
+                inner.style.transform = `rotate(${labelAngle}deg)`;
+                inner.style.transformOrigin = '50% 50%';
+              }
+            }
+          }
+        
+          hiddenLayer.addLayer(tooltip);
+          return;
+        } else {
         // generic POIs
         fillColor = '#0000ff';
         color = '#000080';

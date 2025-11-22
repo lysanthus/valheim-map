@@ -839,6 +839,7 @@
         "name": "Crescent Hills",
         "kind": "hidden",
         "labelType": "area",
+        "labelAngle": -30,
         "notes": ""
       },
       "geometry": {
