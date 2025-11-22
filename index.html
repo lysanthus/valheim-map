@@ -835,6 +835,9 @@
     map.on('click', () => {
       searchResults.style.display = 'none';
     });
+    
+    map.on('zoomend', updateAreaLabelSize);
+      updateAreaLabelSize(); // run once on load
 
     // -------------------------
     //  Click to get pixel coordinates
