@@ -745,11 +745,11 @@
     }
     function updateAreaLabelSize() {
       const z = map.getZoom();
-      const baseSize = 18;
+      const baseSize = 14;
       let scale = 1.0;
     
       // Hide area labels entirely at very low zoom
-      const hideBelowZoom = -1;  // adjust to taste
+      const hideBelowZoom = 0;  // adjust to taste
     
       const areaLabels = document.querySelectorAll(
         '.leaflet-tooltip.map-label.hidden-label.area-label'
