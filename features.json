@@ -838,6 +838,7 @@
       "properties": {
         "name": "Crescent Hills",
         "kind": "hidden",
+        "labelType": "area",
         "notes": ""
       },
       "geometry": {
