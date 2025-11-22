@@ -242,6 +242,14 @@
       background: #eee;
     }
     
+    /* Geographic area labels: a "flavor" of hidden labels */
+    .leaflet-tooltip.map-label.hidden-label.area-label {
+      font-size: 18px;           /* slightly larger */
+      opacity: 0.6;              /* semi-transparent */
+      letter-spacing: 2px;       /* optional: more "region name" vibe */
+      text-transform: uppercase; /* optional */
+    }
+    
   </style>
 </head>
 
@@ -504,15 +512,25 @@
         };
     
       } else if (kind === 'hidden') {
-        // Invisible marker, used only as an anchor for labels
-        options = {
-          radius: 0,
-          stroke: false,
-          fill: false,
-          opacity: 0,
-          fillOpacity: 0,
-          interactive: false
-        };
+        const labelType = props.labelType || ''; // "area" for region labels
+      
+        let tooltipClass = 'map-label hidden-label';
+        if (labelType === 'area') {
+          tooltipClass += ' area-label';
+        }
+      
+        const tooltip = L.tooltip({
+          permanent: true,
+          direction: 'center',
+          className: tooltipClass
+        })
+          .setContent(name)
+          .setLatLng(latlng)
+          .addTo(map);
+      
+        hiddenLayer.addLayer(tooltip);
+        return;
+      }
     
       } else {
         // Default point
