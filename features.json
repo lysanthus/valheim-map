@@ -836,10 +836,10 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Crescent Hills",
+        "name": "Crescent\nHills",
         "kind": "hidden",
         "labelType": "area",
-        "labelAngle": -30,
+        "labelAngle": 30,
         "notes": ""
       },
       "geometry": {
