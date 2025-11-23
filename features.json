@@ -1077,21 +1077,36 @@
       }
     },
     {
-  "type": "Feature",
-  "properties": {
-    "name": "Pike Bay",
-    "kind": "hidden",
-    "labelType": "area",
-    "labelAngle": 0,
-    "notes": ""
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      1972,
-      1885
-    ]
-  }
-}
+      "type": "Feature",
+      "properties": {
+        "name": "Pike Bay",
+        "kind": "hidden",
+        "labelType": "area",
+        "labelAngle": 0,
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1972,
+          1885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Portal",
+        "kind": "portal",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1990,
+          2506
+        ]
+      }
+    }
   ]
 }
