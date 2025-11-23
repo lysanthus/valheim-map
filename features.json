@@ -1079,7 +1079,7 @@
     {
   "type": "Feature",
   "properties": {
-    "name": "New POI",
+    "name": "Pike Bay",
     "kind": "hidden",
     "labelType": "area",
     "labelAngle": 0,
@@ -1088,8 +1088,8 @@
   "geometry": {
     "type": "Point",
     "coordinates": [
-      1937,
-      1896
+      1972,
+      1885
     ]
   }
 }
