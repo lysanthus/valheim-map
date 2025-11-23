@@ -845,8 +845,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          1946,
-          1830
+          1935,
+          1839
         ]
       }
     },
@@ -1075,6 +1075,23 @@
           ]
         ]
       }
-    }
+    },
+    {
+  "type": "Feature",
+  "properties": {
+    "name": "New POI",
+    "kind": "hidden",
+    "labelType": "area",
+    "labelAngle": 0,
+    "notes": ""
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      1937,
+      1896
+    ]
+  }
+}
   ]
 }
