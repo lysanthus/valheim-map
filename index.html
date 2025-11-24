@@ -655,6 +655,32 @@
           layer.bindPopup(popup);
         }
       }
+    
+      // -----------------------------------------------------------
+      // 4) HOVER HIGHLIGHT FOR ROADS
+      // -----------------------------------------------------------
+    
+      if (props.kind === 'road') {
+    
+        // Save original styling so we can restore it later
+        const originalStyle = Object.assign({}, layer.options);
+    
+        layer.on('mouseover', () => {
+          layer.setStyle({
+            ...originalStyle,
+            weight: (originalStyle.weight || 3) * 1.8, // thicker
+            opacity: 1,                                // fully visible
+            color: '#ffffff'                           // bright highlight
+          });
+          layer.bringToFront();
+        });
+    
+        layer.on('mouseout', () => {
+          // Restore original style on mouse leave
+          layer.setStyle(originalStyle);
+        });
+      }
+    
     }
 
     // -------------------------
