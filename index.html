@@ -326,12 +326,26 @@
         <option value="outpost">Outpost</option>
         <option value="portal">Portal</option>
         <option value="poi">Generic POI</option>
+        <option value="hidden">Hidden label (no icon)</option>
       </select>
     
       <label for="poiNotes">Notes</label>
       <textarea id="poiNotes" rows="3" placeholder="e.g. small shack, portal to iron farm"></textarea>
+      
+      <!-- New: Geography checkbox + angle -->
+      <div style="margin-top:4px;">
+        <label style="display:flex; align-items:center; gap:4px; margin-bottom:2px;">
+          <input type="checkbox" id="poiIsGeo">
+          Geography label? (area)
+        </label>
+
+        <div id="geoAngleRow" style="display:none; margin-left:18px; margin-top:2px;">
+          <label for="poiAngle" style="margin:0 0 2px 0;">Label rotation (degrees)</label>
+          <input id="poiAngle" type="number" value="0" min="-180" max="180" step="5">
+        </div>
+      </div>
     
-      <label for="poiJson">JSON snippet (send to Adam)</label>
+      <label for="poiJson">JSON snippet (use Discord bot /addpoi)</label>
       <textarea id="poiJson" rows="5" readonly
                 placeholder="After you click the map, the JSON will appear here."></textarea>
     
@@ -435,6 +449,9 @@
     const poiJsonOutput = document.getElementById('poiJson');
     const clearPoiBtn  = document.getElementById('clearPoiBtn');
     const closePoiBtn  = document.getElementById('closePoiBtn');
+    const poiIsGeo       = document.getElementById('poiIsGeo');
+    const poiAngleInput  = document.getElementById('poiAngle');
+    const geoAngleRow    = document.getElementById('geoAngleRow');
     
     let suggestMode = false;
     
@@ -449,6 +466,22 @@
       }
     }
     
+    // Show/hide angle field and optionally force type to 'hidden'
+    if (poiIsGeo && geoAngleRow) {
+      poiIsGeo.addEventListener('change', () => {
+        if (poiIsGeo.checked) {
+          geoAngleRow.style.display = 'block';
+
+          // Optional: force type to 'hidden' so it behaves as a label-only anchor
+          if (poiKindInput) {
+            poiKindInput.value = 'hidden';
+          }
+        } else {
+          geoAngleRow.style.display = 'none';
+        }
+      });
+    }
+    
     // Toggle button
     suggestBtn.addEventListener('click', () => {
       setSuggestMode(!suggestMode);
@@ -459,6 +492,16 @@
       poiNameInput.value = '';
       poiNotesInput.value = '';
       poiJsonOutput.value = '';
+
+      if (poiIsGeo) {
+        poiIsGeo.checked = false;
+      }
+      if (geoAngleRow) {
+        geoAngleRow.style.display = 'none';
+      }
+      if (poiAngleInput) {
+        poiAngleInput.value = '0';
+      }
     });
     
     // Close panel and exit suggest mode
@@ -852,32 +895,53 @@
     
       // If we're in Suggest POI mode, build a snippet for the player
       if (suggestMode) {
-        const name = poiNameInput.value.trim() || "New POI";
-        const kind = (poiKindInput.value || "poi").trim();
+        const name  = poiNameInput.value.trim() || "New POI";
+        let   kind  = (poiKindInput.value || "poi").trim();
         const notes = poiNotesInput.value.trim();
-    
+
+        const isGeo = poiIsGeo && poiIsGeo.checked;
+        let angle   = null;
+
+        if (poiAngleInput && poiAngleInput.value !== '') {
+          const parsed = Number(poiAngleInput.value);
+          if (!Number.isNaN(parsed)) {
+            angle = parsed;
+          }
+        }
+
+        // Build properties
+        const props = {
+          name:  name,
+          kind:  kind,
+          notes: notes
+        };
+
+        if (isGeo) {
+          // Geography labels are a flavor of hidden labels
+          props.labelType = 'area';
+
+          // Force kind to hidden so it behaves like a label-only anchor on your map
+          props.kind = 'hidden';
+
+          if (angle !== null) {
+            props.labelAngle = angle;   // this will be in the JSON for future rotation logic
+          }
+        }
+
         const feature = {
           type: "Feature",
-          properties: {
-            name: name,
-            kind: kind,
-            notes: notes
-          },
+          properties: props,
           geometry: {
             type: "Point",
             coordinates: [x, y]
           }
         };
-    
+
         const jsonText = JSON.stringify(feature, null, 2);
         poiJsonOutput.value = jsonText;
-    
+
         console.log('Suggested POI Feature:', jsonText);
-    
-        // Optional: small alert to confirm
-        // alert("POI JSON generated below. Copy it and send it to the GM!");
-    
-        return; // don't also generate the default snippet
+        return;
       }
     
       // Normal behavior when NOT in suggest mode:
