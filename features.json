@@ -1136,6 +1136,47 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Trader Road",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            1980,
+            2488
+          ],
+          [
+            1986,
+            2481
+          ],
+          [
+            1994,
+            2478
+          ],
+          [
+            2003,
+            2475
+          ],
+          [
+            2011,
+            2470
+          ],
+          [
+            2017,
+            2466
+          ],
+          [
+            2023,
+            2459
+          ]
+        ]
+      }
     }
   ]
 }
