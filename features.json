@@ -1107,6 +1107,35 @@
           2506
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Trader Road",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            1989,
+            2505
+          ],
+          [
+            1989,
+            2499
+          ],
+          [
+            1986,
+            2495
+          ],
+          [
+            1981,
+            2493
+          ]
+        ]
+      }
     }
   ]
 }
