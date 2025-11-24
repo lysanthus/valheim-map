@@ -44,7 +44,8 @@
       margin-bottom: 2px;
     }
     
-    .suggest-panel input,
+    .suggest-panel input[type="text"],
+    .suggest-panel input[type="number"],
     .suggest-panel select,
     .suggest-panel textarea {
       width: 100%;
@@ -69,6 +70,15 @@
       padding: 3px 4px;
       font-size: 11px;
       cursor: pointer;
+    }
+    
+    .suggest-panel .geo-label {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+      margin-bottom: 2px;
+      color: #fff; /* ensure it’s visible against the dark panel */
     }
     
     .hidden {
@@ -330,15 +340,15 @@
       </select>
     
       <label for="poiNotes">Notes</label>
-      <textarea id="poiNotes" rows="3" placeholder="e.g. small shack, portal to iron farm"></textarea>
+      <textarea id="poiNotes" rows="3" placeholder="e.g. small shack, iron farm, etc."></textarea>
       
       <!-- New: Geography checkbox + angle -->
       <div style="margin-top:4px;">
-        <label style="display:flex; align-items:center; gap:4px; margin-bottom:2px;">
+        <label class="geo-label">
           <input type="checkbox" id="poiIsGeo">
-          Geography label? (area)
+          <span>Geography label (area)</span>
         </label>
-
+      
         <div id="geoAngleRow" style="display:none; margin-left:18px; margin-top:2px;">
           <label for="poiAngle" style="margin:0 0 2px 0;">Label rotation (degrees)</label>
           <input id="poiAngle" type="number" value="0" min="-180" max="180" step="5">
