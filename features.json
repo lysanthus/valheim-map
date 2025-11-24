@@ -1177,6 +1177,23 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moonsea",
+        "kind": "hidden",
+        "notes": "",
+        "labelType": "area",
+        "labelAngle": -45
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2112,
+          2131
+        ]
+      }
     }
   ]
 }
