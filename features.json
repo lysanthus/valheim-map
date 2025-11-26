@@ -1413,6 +1413,21 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wanderers Rest",
+        "kind": "outpost",
+        "notes": "Sometimes those who wander ARE lost. This is a refurbed POI with a few amenities."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1876,
+          1919
+        ]
+      }
     }
   ]
 }
