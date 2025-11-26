@@ -1443,6 +1443,21 @@
           1919
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bearnest Roost",
+        "kind": "outpost",
+        "notes": "A shack with a runway out into the swamp for gliding to a sunken crypt. Glide is Life!"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2162,
+          2440
+        ]
+      }
     }
   ]
 }
