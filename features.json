@@ -1458,6 +1458,21 @@
           2440
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Golem Heights",
+        "kind": "poi",
+        "notes": "Peak infested with Golems ready to pound your ass with great fervor. Also riddle with drakes, BUT on the plus side, DRAGON EGGS."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2160,
+          2398
+        ]
+      }
     }
   ]
 }
