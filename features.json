@@ -1473,6 +1473,21 @@
           2398
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wolfhaven",
+        "kind": "outpost",
+        "notes": "Breeding grounds for our attack warg army. Unfortunately situated by drake nest which spawns eggs (good!) and an asston of drakes that like to kick everythings ass."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2149,
+          2387
+        ]
+      }
     }
   ]
 }
