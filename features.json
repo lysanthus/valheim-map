@@ -1488,6 +1488,21 @@
           2387
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grizzly Gap",
+        "kind": "outpost",
+        "notes": "Drawbridge and Towers across the canal from Moonsee to the Gulf of Whispers"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2234,
+          2177
+        ]
+      }
     }
   ]
 }
