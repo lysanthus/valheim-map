@@ -1503,6 +1503,35 @@
           2177
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moon Bay Isthmus",
+        "kind": "road",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2221,
+            2231
+          ],
+          [
+            2220,
+            2214
+          ],
+          [
+            2219,
+            2196
+          ],
+          [
+            2234,
+            2180
+          ]
+        ]
+      }
     }
   ]
 }
