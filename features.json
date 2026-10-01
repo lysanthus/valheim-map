@@ -1,4 +1,20 @@
 {
   "type": "FeatureCollection",
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Test",
+        "kind": "base",
+        "notes": "Testing map bot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1880,
+          1990
+        ]
+      }
+    }
+  ]
 }
