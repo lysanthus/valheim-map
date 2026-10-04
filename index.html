@@ -270,7 +270,7 @@
 
 <body>
   <div id="map"></div>
-  <div id="coords" class="coords-panel">Click the map to get pixel coordinates…</div>
+  <div id="coords" class="coords-panel">Click the map to get coordinates…</div>
   <div class="legend">
   <strong>Legend</strong>
 
@@ -381,25 +381,37 @@
     // Search index of POIs
     const searchIndex = [];
   
-    // Image size in pixels
+    // Valheim coordinate system:
+    // Center of world (spawn) is (0, 0).
+    // Radius is 10,000 meters; diameter is 20,000 meters.
+    // The 4096x4096 map image covers [-10000, 10000] on both X (West-East) and Y (South-North).
+    const WORLD_RADIUS = 10000;
     const IMG_WIDTH = 4096;
     const IMG_HEIGHT = 4096;
 
-    // Create a Leaflet map using a simple CRS (no real-world projection)
+    // Scale factor mapping Valheim meters to 4096px display pixels: 4096 / 20000 = 0.2048
+    const scaleFactor = IMG_WIDTH / (WORLD_RADIUS * 2);
+
+    // Custom CRS centered at (0, 0)
+    const valheimCRS = L.Util.extend({}, L.CRS.Simple, {
+      transformation: new L.Transformation(scaleFactor, 0, -scaleFactor, 0)
+    });
+
+    // Create a Leaflet map using the Valheim coordinate system
     const map = L.map('map', {
-      crs: L.CRS.Simple,
+      crs: valheimCRS,
       minZoom: -2,
       maxZoom: 2
     });
     
-    // Define the map bounds in "pixel coordinates": [y, x]
-    const bounds = [[0, 0], [IMG_HEIGHT, IMG_WIDTH]];
+    // Define the map bounds in Valheim coordinates: [[south, west], [north, east]]
+    const bounds = [[-WORLD_RADIUS, -WORLD_RADIUS], [WORLD_RADIUS, WORLD_RADIUS]];
 
     // Add the image overlay
     L.imageOverlay('map.png', bounds).addTo(map);
 
-    // Center and zoom (you already picked a zoom level you like)
-    map.setView([IMG_HEIGHT / 2, IMG_WIDTH / 2], 1); // adjust zoom as desired
+    // Center on Valheim spawn (0, 0) and zoom
+    map.setView([0, 0], 1); // adjust zoom as desired
     
     // --- MiniMap setup ---
 
@@ -419,7 +431,7 @@
       // Make the minimap use the same CRS and lock zoom,
       // and also prevent the minimap itself from being dragged/zoomed.
       mapOptions: {
-        crs: L.CRS.Simple,
+        crs: valheimCRS,
         minZoom: fixedMiniZoom,
         maxZoom: fixedMiniZoom,
         zoomControl: false,
@@ -919,7 +931,7 @@
       updateAreaLabelSize(); // run once on load
 
     // -------------------------
-    //  Click to get pixel coordinates
+    //  Click to get Valheim coordinates
     // -------------------------
     const coordsDiv = document.getElementById('coords');
 
@@ -1035,7 +1047,7 @@
       const gj = layer.toGeoJSON();
 
       // gj.geometry.coordinates are [lng, lat] pairs in our CRS,
-      // which map directly to [x, y] pixels. We'll round them.
+      // which map directly to Valheim [x, y] coordinates. We'll round them.
       const coords = gj.geometry.coordinates.map(function (c) {
         return [Math.round(c[0]), Math.round(c[1])];
       });

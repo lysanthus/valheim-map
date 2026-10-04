@@ -15,21 +15,6 @@
           -332
         ]
       }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Sacrifice Stones",
-        "kind": "poi",
-        "notes": ""
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -176,
-          -332
-        ]
-      }
     }
   ]
 }
