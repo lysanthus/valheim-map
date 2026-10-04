@@ -1,5 +1,20 @@
 {
   "type": "FeatureCollection",
   "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "First Base",
+        "kind": "base",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -186,
+          -205
+        ]
+      }
+    }
   ]
 }
