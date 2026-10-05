@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Valheim World Map</title>
 
-  <!-- World Seed: 8yz7mzFzt7 -->
+  <!-- World Seed: jRL5LxRgQz -->
   <!-- Leaflet core -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 
@@ -408,7 +408,7 @@
     const bounds = [[-WORLD_RADIUS, -WORLD_RADIUS], [WORLD_RADIUS, WORLD_RADIUS]];
 
     // Add the image overlay
-    L.imageOverlay('map.png', bounds).addTo(map);
+    L.imageOverlay('map.webp', bounds).addTo(map);
 
     // Center on Valheim spawn (0, 0) and zoom
     map.setView([0, 0], 1); // adjust zoom as desired
@@ -416,7 +416,7 @@
     // --- MiniMap setup ---
 
     // Use a separate imageOverlay layer for the minimap
-    const miniLayer = L.imageOverlay('map.png', bounds);
+    const miniLayer = L.imageOverlay('map.webp', bounds);
     
     const fixedMiniZoom = -5;  // whatever zoom you liked best
     
