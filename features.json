@@ -15,6 +15,21 @@
           -205
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lighthouse",
+        "kind": "poi",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -452,
+          557
+        ]
+      }
     }
   ]
 }
