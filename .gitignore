@@ -1,1 +1,6 @@
 map.png
+bot_log.txt
+map_bot.py
+map_bot_stdout.log
+update_map_image.sh
+map.png
