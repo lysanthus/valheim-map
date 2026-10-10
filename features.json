@@ -30,6 +30,21 @@
           557
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elder Outpost",
+        "kind": "outpost",
+        "notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1951,
+          618
+        ]
+      }
     }
   ]
 }
