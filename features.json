@@ -4,36 +4,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "First Base",
-        "kind": "base",
-        "notes": ""
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -186,
-          -205
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Lighthouse",
-        "kind": "poi",
-        "notes": ""
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -452,
-          557
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "name": "Elder Outpost",
         "kind": "outpost",
         "notes": ""
