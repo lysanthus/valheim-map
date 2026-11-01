@@ -101,6 +101,21 @@
           -4720
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nav Beacon",
+        "kind": "poi",
+        "notes": "Nav Beacon Due West of Dornhofn"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -371,
+          -4749
+        ]
+      }
     }
   ]
 }
