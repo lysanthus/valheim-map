@@ -84,6 +84,23 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nav Beacon",
+        "kind": "hidden",
+        "notes": "Far West Pains Nav Beacon West of Dornhofn",
+        "labelType": "area",
+        "labelAngle": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1086,
+          -4720
+        ]
+      }
     }
   ]
 }
